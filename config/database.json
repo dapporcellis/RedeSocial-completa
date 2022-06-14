@@ -12,6 +12,7 @@
     "password": "postgres",
     "database": "redesocial_test",
     "host": "localhost",
+    "port": 5433,
     "dialect": "postgres"
   },
   "production": {
@@ -19,6 +20,7 @@
     "password": "postgres",
     "database": "redesocial_production",
     "host": "localhost",
+    "port": 5433,
     "dialect": "postgres"
   }
 }
