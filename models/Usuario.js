@@ -1,7 +1,7 @@
-const { Sequelize, DataTypes } = require("sequelize");
-const sequelize = new Sequelize("");
+const { DataTypes } = require("sequelize");
+const conexao = require("../config/conexao");
 
-const Usuario = sequelize.define(
+const Usuario = conexao.define(
   "Usuario",
   {
     nome: {
@@ -19,7 +19,9 @@ const Usuario = sequelize.define(
     },
   },
   {
-    sequelize,
     timestamps: false,
+    tableName: "usuarios",
   }
 );
+
+module.exports = Usuario;
