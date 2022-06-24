@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const porta = process.env.PORT || 3000;
+var session = require("express-session");
+var passport = require("passport");
 
 const loginRoute = require("./routes/loginRoute");
 
@@ -13,6 +15,16 @@ app.use(express.urlencoded({ extended: false }));
 
 //pasta de arquivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(passport.authenticate("session"));
 
 app.use("/", loginRoute);
 

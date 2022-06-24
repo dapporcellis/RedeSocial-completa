@@ -1,11 +1,15 @@
 const Usuario = require("../models/Usuario");
 const bcrypt = require("bcrypt");
+const passport = require("../config/passport");
 
 async function abreTela(req, res) {
   res.render("login/login.ejs");
 }
 
-async function logar(req, res) {}
+const logar = passport.authenticate("local", {
+  failureRedirect: "/",
+  successRedirect: "/logado",
+});
 
 async function cadastro(req, res) {
   var nome = req.body.nome;
