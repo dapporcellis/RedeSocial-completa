@@ -7,6 +7,12 @@ var passport = require("passport");
 
 const loginRoute = require("./routes/loginRoute");
 
+const Foto = require("./models/Foto");
+const Usuario = require("./models/Usuario");
+
+Foto.belongsTo(Usuario);
+Usuario.hasMany(Foto);
+
 //configuração dos arquivos de visão (VIEWS)
 app.set("view engine", "ejs");
 
@@ -30,6 +36,18 @@ app.use("/", loginRoute);
 
 app.get("/galeria", function (req, res) {
   res.render("principal/galeria");
+});
+
+app.get("/teste", async function (req, res) {
+  const foto = await Foto.create({
+    nome: "oi.jpg",
+    descricao: "Oi",
+    data: new Date(),
+    UsuarioId: 1,
+  }).catch((err) => {
+    console.log(err);
+  });
+  console.log(foto);
 });
 
 app.listen(porta, function () {
