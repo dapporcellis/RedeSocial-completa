@@ -6,6 +6,7 @@ var session = require("express-session");
 var passport = require("passport");
 
 const loginRoute = require("./routes/loginRoute");
+const principalRoute = require("./routes/principalRoute");
 
 const Foto = require("./models/Foto");
 const Usuario = require("./models/Usuario");
@@ -34,9 +35,7 @@ app.use(passport.authenticate("session"));
 
 app.use("/", loginRoute);
 
-app.get("/galeria", function (req, res) {
-  res.render("principal/galeria");
-});
+app.use("/", principalRoute);
 
 app.get("/teste", async function (req, res) {
   const foto = await Foto.create({

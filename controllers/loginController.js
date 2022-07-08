@@ -8,7 +8,7 @@ async function abreTela(req, res) {
 
 const logar = passport.authenticate("local", {
   failureRedirect: "/",
-  successRedirect: "/logado",
+  successRedirect: "/galeria",
 });
 
 async function cadastro(req, res) {
