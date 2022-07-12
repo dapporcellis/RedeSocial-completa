@@ -1,5 +1,12 @@
+const Foto = require("../models/Foto");
+
 async function abregaleria(req, res) {
-  res.render("principal/galeria");
+  const fotos = await Foto.findAll({
+    where: {
+      UsuarioId: req.user.id,
+    },
+  });
+  res.render("principal/galeria", { Fotos: fotos });
 }
 
 async function postarfoto(req, res) {
@@ -34,6 +41,16 @@ async function criarcomunidade(req, res) {
   res.render("principal/criarcomunidade");
 }
 
+async function salvarfoto(req, res) {
+  const foto = await Foto.create({
+    nome: req.file.filename,
+    descricao: req.body.descricao,
+    data: new Date(),
+    UsuarioId: req.user.id,
+  });
+  res.redirect("/galeria");
+}
+
 module.exports = {
   abregaleria,
   postarfoto,
@@ -44,4 +61,5 @@ module.exports = {
   buscarcomunidade,
   minhascomunidades,
   criarcomunidade,
+  salvarfoto,
 };

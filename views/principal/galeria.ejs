@@ -33,23 +33,25 @@
 
             <div class="row">
               <!--INICIO IMAGEM-->
+              <% Fotos.forEach(function(foto){%>
               <div class="col-md-3">
                 <div class="thumbnail">
                   <div class="image view view-first">
-                    <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
+                    <img style="width: 100%; display: block;" src="/fotos/<%=foto.nome%>" alt="image" />
                     <div class="mask">
                       <div class="tools tools-bottom">
                         <a href="#"><i class="fa fa-link"></i></a>
                         <a href="#"><i class="fa fa-pencil"></i></a>
-                        <a href="#"><i class="fa fa-trash-o"></i></a>
+                        <a href="/deletarfoto/<%=foto.id%>"><i class="fa fa-trash-o"></i></a>
                       </div>
                     </div>
                   </div>
                   <div class="caption">
-                    <p>Descrição</p>
+                    <p><%=foto.descricao%></p>
                   </div>
                 </div>
               </div>
+              <% }) %>
               <!--FIM IMAGEM-->
             </div>
           </div>
