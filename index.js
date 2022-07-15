@@ -37,18 +37,6 @@ app.use("/", loginRoute);
 
 app.use("/", principalRoute);
 
-app.get("/teste", async function (req, res) {
-  const foto = await Foto.create({
-    nome: "oi.jpg",
-    descricao: "Oi",
-    data: new Date(),
-    UsuarioId: 1,
-  }).catch((err) => {
-    console.log(err);
-  });
-  console.log(foto);
-});
-
 app.listen(porta, function () {
   console.log("Servidor funcionando!");
 });

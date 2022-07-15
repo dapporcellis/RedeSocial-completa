@@ -51,6 +51,15 @@ async function salvarfoto(req, res) {
   res.redirect("/galeria");
 }
 
+async function sair(req, res) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+}
+
 module.exports = {
   abregaleria,
   postarfoto,
@@ -62,4 +71,5 @@ module.exports = {
   minhascomunidades,
   criarcomunidade,
   salvarfoto,
+  sair,
 };

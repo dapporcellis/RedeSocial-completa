@@ -2,21 +2,37 @@ const express = require("express");
 const router = express.Router();
 const principalController = require("../controllers/principalController");
 const upload = require("../config/upload");
+const autenticacao = require("../config/autenticacao");
 
-router.get("/galeria", principalController.abregaleria);
-router.get("/postarfotos", principalController.postarfoto);
-router.get("/postagem", principalController.postagem);
-router.get("/postagens", principalController.postagens);
-router.get("/listaramigos", principalController.listaramigos);
-router.get("/buscaramigos", principalController.buscaramigos);
-router.get("/buscarcomunidade", principalController.buscarcomunidade);
-router.get("/minhascomunidades", principalController.minhascomunidades);
-router.get("/criarcomunidade", principalController.criarcomunidade);
+router.get("/galeria", autenticacao, principalController.abregaleria);
+router.get("/postarfotos", autenticacao, principalController.postarfoto);
+router.get("/postagem", autenticacao, principalController.postagem);
+router.get("/postagens", autenticacao, principalController.postagens);
+router.get("/listaramigos", autenticacao, principalController.listaramigos);
+router.get("/buscaramigos", autenticacao, principalController.buscaramigos);
+router.get(
+  "/buscarcomunidade",
+  autenticacao,
+  principalController.buscarcomunidade
+);
+router.get(
+  "/minhascomunidades",
+  autenticacao,
+  principalController.minhascomunidades
+);
+router.get(
+  "/criarcomunidade",
+  autenticacao,
+  principalController.criarcomunidade
+);
 
 router.post(
   "/postarfotos",
+  autenticacao,
   upload.single("foto"),
   principalController.salvarfoto
 );
+
+router.get("/sair", autenticacao, principalController.sair);
 
 module.exports = router;
