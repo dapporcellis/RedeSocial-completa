@@ -1,4 +1,5 @@
 const Foto = require("../models/Foto");
+const Postagem = require("../models/Postagem");
 
 async function abregaleria(req, res) {
   const fotos = await Foto.findAll({
@@ -18,7 +19,16 @@ async function postagem(req, res) {
 }
 
 async function postagens(req, res) {
-  res.render("principal/postagens");
+  //buscar as postagens do usuario que esta logado
+  const postagens = await Postagem.findAll({
+    where: {
+      UsuarioId: req.user.id,
+    },
+    include: ["Usuario"], //incluir dados do usuário na pesquisa
+  });
+  //renderizar a tela postagens enviando
+  //como Postagens as postagens encontradas
+  res.render("principal/postagens", { Postagens: postagens });
 }
 
 async function listaramigos(req, res) {
@@ -51,6 +61,16 @@ async function salvarfoto(req, res) {
   res.redirect("/galeria");
 }
 
+async function fazerpostagem(req, res) {
+  const postagem = await Postagem.create({
+    titulo: req.body.titulo,
+    postagem: req.body.postagem,
+    data: new Date(), //data atual
+    UsuarioId: req.user.id, //usuário que esta logado na aplicação
+  });
+  res.redirect("/postagens");
+}
+
 async function sair(req, res) {
   req.logout(function (err) {
     if (err) {
@@ -72,4 +92,5 @@ module.exports = {
   criarcomunidade,
   salvarfoto,
   sair,
+  fazerpostagem,
 };

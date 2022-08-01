@@ -10,6 +10,10 @@ const principalRoute = require("./routes/principalRoute");
 
 const Foto = require("./models/Foto");
 const Usuario = require("./models/Usuario");
+const Postagem = require("./models/Postagem");
+
+Postagem.belongsTo(Usuario);
+Usuario.hasMany(Postagem);
 
 Foto.belongsTo(Usuario);
 Usuario.hasMany(Foto);

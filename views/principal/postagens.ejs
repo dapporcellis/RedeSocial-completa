@@ -27,46 +27,25 @@
                                 <div class="x_content">
                                     <div class="dashboard-widget-content">
                                         <ul class="list-unstyled timeline widget">
+                                            <%Postagens.forEach(function(postagem){%>
                                             <!--INICIO POSTAGEM-->
                                             <li>
                                                 <div class="block">
                                                     <div class="block_content">
                                                         <h2 class="title">
-                                                            <a>Título</a>
+                                                            <a><%=postagem.titulo%></a>
                                                         </h2>
                                                         <div class="byline">
-                                                            <span>12/07/2022</span> por <a>Diego Porcellis</a>
+                                                            <span><%=postagem.data%></span> por
+                                                            <a><%=postagem.Usuario.nome%></a>
                                                         </div>
-                                                        <p class="excerpt">Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto TextoTexto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto TextoTexto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto TextoTexto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto TextoTexto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto TextoTexto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto TextoTexto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto TextoTexto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto
-                                                            Texto Texto Texto Texto Texto Texto Texto Texto TextoTexto
-                                                            Texto </a>
+                                                        <p class="excerpt"><%=postagem.postagem%></a>
                                                         </p>
                                                     </div>
                                                 </div>
                                             </li>
                                             <!--FIM POSTAGEM-->
+                                            <% }) %>
                                         </ul>
                                     </div>
                                 </div>
