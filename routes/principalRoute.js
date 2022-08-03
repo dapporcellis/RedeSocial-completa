@@ -12,8 +12,11 @@ router.get("/postarfotos", autenticacao, principalController.postarfoto);
 router.get("/postagem", autenticacao, principalController.postagem);
 //visualizar as postagens do usuario atual
 router.get("/postagens", autenticacao, principalController.postagens);
+//lista apenas os amigos
 router.get("/listaramigos", autenticacao, principalController.listaramigos);
+//rota para buscar usuários cadastrados
 router.get("/buscaramigos", autenticacao, principalController.buscaramigos);
+
 router.get(
   "/buscarcomunidade",
   autenticacao,
@@ -38,6 +41,12 @@ router.post(
 );
 
 router.post("/postagem", autenticacao, principalController.fazerpostagem);
+
+router.post(
+  "/buscaramigos",
+  autenticacao,
+  principalController.buscaramigosfiltro
+);
 
 router.get("/sair", autenticacao, principalController.sair);
 

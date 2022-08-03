@@ -1,5 +1,7 @@
 const Foto = require("../models/Foto");
 const Postagem = require("../models/Postagem");
+const Usuario = require("../models/Usuario");
+const { Op } = require("sequelize");
 
 async function abregaleria(req, res) {
   const fotos = await Foto.findAll({
@@ -36,7 +38,24 @@ async function listaramigos(req, res) {
 }
 
 async function buscaramigos(req, res) {
-  res.render("principal/buscaramigos");
+  const usuarios = await Usuario.findAll({
+    where: {
+      [Op.not]: [{ id: req.user.id }],
+    },
+  });
+  res.render("principal/buscaramigos", { Usuarios: usuarios });
+}
+
+async function buscaramigosfiltro(req, res) {
+  const usuarios = await Usuario.findAll({
+    where: {
+      [Op.not]: [{ id: req.user.id }],
+      nome: {
+        [Op.iLike]: "%" + req.body.pesquisar + "%",
+      },
+    },
+  });
+  res.render("principal/buscaramigos", { Usuarios: usuarios });
 }
 
 async function buscarcomunidade(req, res) {
@@ -93,4 +112,5 @@ module.exports = {
   salvarfoto,
   sair,
   fazerpostagem,
+  buscaramigosfiltro,
 };
