@@ -16,6 +16,25 @@ router.get("/postagens", autenticacao, principalController.postagens);
 router.get("/listaramigos", autenticacao, principalController.listaramigos);
 //rota para buscar usuários cadastrados
 router.get("/buscaramigos", autenticacao, principalController.buscaramigos);
+//rota para adicionar amigo
+router.get("/adicionar/:id", autenticacao, principalController.adicionaramigo);
+//rota onde encontro as solicitações de amizade
+router.get("/solicitacoes", autenticacao, principalController.solicitacoes);
+//rota para edição do perfil
+router.get("/perfil", autenticacao, principalController.perfil);
+//rota para edição do perfil metodo post
+router.post(
+  "/perfil",
+  autenticacao,
+  upload.single("foto"),
+  principalController.editaperfil
+);
+//rota para aceitar ou rejeitar a solicitação de amizade
+router.get(
+  "/solicitacoes/:id/:situacao",
+  autenticacao,
+  principalController.respostasolicitacao
+);
 
 router.get(
   "/buscarcomunidade",

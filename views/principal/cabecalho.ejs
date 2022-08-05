@@ -31,6 +31,28 @@
 
   <!-- Custom Theme Style -->
   <link href="/build/css/custom.min.css" rel="stylesheet">
+  <style type="text/css">
+    .center-cropped {
+      width: 60px;
+      height: 60px;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .center-cropped1 {
+      width: 111.94px;
+      height: 111.94px;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .center-cropped2 {
+      width: 200px;
+      height: 200px;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+  </style>
 
 </head>
 
@@ -48,11 +70,16 @@
           <!-- menu profile quick info -->
           <div class="profile clearfix">
             <div class="profile_pic">
+              <%if(!Usuario.foto){%>
               <img src="/images/img.jpg" alt="..." class="img-circle profile_img">
+              <%}%>
+              <%if(Usuario.foto){%>
+              <img src="/fotos/<%=Usuario.foto%>" alt="..." class="img-circle profile_img center-cropped">
+              <%}%> 
             </div>
             <div class="profile_info">
               <span>Bem-Vindo,</span>
-              <h2>Diego Porcellis</h2>
+              <h2><%=Usuario.nome%></h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -66,6 +93,7 @@
               <ul class="nav side-menu">
                 <li><a><i class="fa fa-users"></i> Amigos <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
+                    <li><a href="/solicitacoes">Solicitações de amizade</a></li>
                     <li><a href="/buscaramigos">Buscar amigos</a></li>
                     <li><a href="/listaramigos">Listar amigos</a></li>
                   </ul>
@@ -124,13 +152,18 @@
               <li class="nav-item dropdown open" style="padding-left: 15px;">
                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown"
                   data-toggle="dropdown" aria-expanded="false">
-                  <img src="/images/img.jpg" alt="">Diego Porcellis
+                  <%if(Usuario.foto){%>
+                  <img src="/fotos/<%=Usuario.foto%>" alt="..."><%=Usuario.nome%>
+                  <%}%>
+                  <%if(!Usuario.foto){%>
+                  <img src="/images/img.jpg" alt=""><%=Usuario.nome%>
+                  <%}%>
                 </a>
                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/perfil"> Profile</a>
+                  <a class="dropdown-item" href="/perfil"> Perfil</a>
 
 
-                  <a class="dropdown-item" href="/sair"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                  <a class="dropdown-item" href="/sair"><i class="fa fa-sign-out pull-right"></i> Sair</a>
                 </div>
               </li>
             </ul>

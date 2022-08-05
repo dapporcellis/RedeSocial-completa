@@ -11,12 +11,52 @@ const principalRoute = require("./routes/principalRoute");
 const Foto = require("./models/Foto");
 const Usuario = require("./models/Usuario");
 const Postagem = require("./models/Postagem");
+const Amigo = require("./models/Amigo");
 
 Postagem.belongsTo(Usuario);
 Usuario.hasMany(Postagem);
 
 Foto.belongsTo(Usuario);
 Usuario.hasMany(Foto);
+
+Usuario.belongsToMany(Usuario, {
+  as: "solicitante",
+  foreignKey: "idsolicitante",
+  through: Amigo,
+});
+
+Usuario.belongsToMany(Usuario, {
+  as: "amigos1",
+  foreignKey: "idsolicitado",
+  through: {
+    model: Amigo,
+    scope: {
+      situacao: "A",
+    },
+  },
+});
+
+Usuario.belongsToMany(Usuario, {
+  as: "amigos2",
+  foreignKey: "idsolicitante",
+  through: {
+    model: Amigo,
+    scope: {
+      situacao: "A",
+    },
+  },
+});
+
+Usuario.belongsToMany(Usuario, {
+  as: "pendente",
+  foreignKey: "idsolicitado",
+  through: {
+    model: Amigo,
+    scope: {
+      situacao: "P",
+    },
+  },
+});
 
 //configuração dos arquivos de visão (VIEWS)
 app.set("view engine", "ejs");

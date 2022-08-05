@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "postgres",
-    "database": "redesocial_development",
+    "database": "redesocial_teste",
     "host": "localhost",
     "port": 5433,
     "dialect": "postgres"
@@ -16,11 +16,13 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "redesocial_production",
-    "host": "localhost",
-    "port": 5433,
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }
