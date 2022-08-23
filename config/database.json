@@ -1,10 +1,10 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "redesocial_teste",
-    "host": "localhost",
-    "port": 5433,
+    "username": "tawhihlqjlofhk",
+    "password": "fa9f85c9d7116ebee41d93095964ceb247ac9b978ed813814d34ed07c37d79ca",
+    "database": "d19pntvbo46qgm",
+    "host": "ec2-34-235-198-25.compute-1.amazonaws.com",
+    "port": 5432,
     "dialect": "postgres"
   },
   "test": {
