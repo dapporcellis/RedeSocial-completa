@@ -8,6 +8,9 @@ const conexao = new sequelize(
     host: "ec2-34-235-198-25.compute-1.amazonaws.com",
     port: "5432",
     dialect: "postgres",
+    dialectOptions: {
+      ssl: true,
+    },
   }
 );
 

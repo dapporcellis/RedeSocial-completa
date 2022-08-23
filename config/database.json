@@ -21,6 +21,9 @@
     "database": "d19pntvbo46qgm",
     "host": "ec2-34-235-198-25.compute-1.amazonaws.com",
     "port": 5432,
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": true
+    }
   }
 }
