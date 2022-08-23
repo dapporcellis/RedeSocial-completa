@@ -102,7 +102,7 @@ async function criarcomunidade(req, res) {
 
 async function salvarfoto(req, res) {
   const foto = await Foto.create({
-    nome: req.file.filename,
+    nome: req.file.path,
     descricao: req.body.descricao,
     data: new Date(),
     UsuarioId: req.user.id,
@@ -163,7 +163,7 @@ async function perfil(req, res) {
 async function editaperfil(req, res) {
   const usuario = await Usuario.findByPk(req.user.id);
   usuario.nome = req.body.nome;
-  usuario.foto = req.file.filename;
+  usuario.foto = req.file.path;
   await usuario.save();
   res.redirect("/listaramigos");
 }

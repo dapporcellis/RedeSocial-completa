@@ -74,7 +74,7 @@
               <img src="/images/img.jpg" alt="..." class="img-circle profile_img">
               <%}%>
               <%if(Usuario.foto){%>
-              <img src="/fotos/<%=Usuario.foto%>" alt="..." class="img-circle profile_img center-cropped">
+              <img src="<%=Usuario.foto%>" alt="..." class="img-circle profile_img center-cropped">
               <%}%> 
             </div>
             <div class="profile_info">
@@ -153,7 +153,7 @@
                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown"
                   data-toggle="dropdown" aria-expanded="false">
                   <%if(Usuario.foto){%>
-                  <img src="/fotos/<%=Usuario.foto%>" alt="..."><%=Usuario.nome%>
+                  <img src="<%=Usuario.foto%>" alt="..."><%=Usuario.nome%>
                   <%}%>
                   <%if(!Usuario.foto){%>
                   <img src="/images/img.jpg" alt=""><%=Usuario.nome%>
