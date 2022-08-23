@@ -1,13 +1,11 @@
 {
   "development": {
-    "use_env_variable": "DATABASE_URL",
-    "dialect": "postgres",
-    "dialectOptions": {
-      "ssl": {
-        "require": true,
-        "rejectUnauthorized": false
-      }
-    }
+    "username": "postgres",
+    "password": "postgres",
+    "database": "redesocial_teste",
+    "host": "localhost",
+    "port": 5433,
+    "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
@@ -18,13 +16,11 @@
     "dialect": "postgres"
   },
   "production": {
-    "use_env_variable": "DATABASE_URL",
-    "dialect": "postgres",
-    "dialectOptions": {
-      "ssl": {
-        "require": true,
-        "rejectUnauthorized": false
-      }
-    }
+    "username": "postgres",
+    "password": "postgres",
+    "database": "redesocial_test",
+    "host": "localhost",
+    "port": 5433,
+    "dialect": "postgres"
   }
 }
