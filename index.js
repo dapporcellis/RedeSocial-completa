@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const porta = process.env.PORT || 3000;
-var session = require("express-session");
+var session = require("cookie-session");
 var passport = require("passport");
 
 const loginRoute = require("./routes/loginRoute");
